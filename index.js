@@ -16,4 +16,5 @@ app.use("/uploads", express.static("uploads"));
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
+  document.write(`App listening at http://localhost:${port}`);
 });
