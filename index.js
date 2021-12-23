@@ -10,14 +10,14 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/v1/", router);
-app.use("/uploads", express.static("uploads"));
-
 app.get("/", function (req, res) {
   res.send({
     message: "Hello World",
   });
 });
+
+app.use("/api/v1/", router);
+app.use("/uploads", express.static("uploads"));
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
