@@ -20,7 +20,6 @@ exports.addItem = async (req, res) => {
     const newItem = await barang.create({
       ...req.body,
       idUser: req.user.id,
-      image: req.files.image[0].filename,
     });
 
     if (newItem) {
