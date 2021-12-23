@@ -71,19 +71,9 @@ exports.getBarang = async (req, res) => {
       },
     });
 
-    const newData = data.map((item) => ({
-      id: item.id,
-      name: item.name,
-      idUser: item.idUser,
-      priceBuy: item.priceBuy,
-      priceSell: item.priceSell,
-      stock: item.stock,
-      image: pathFile + item.image,
-    }));
-
     res.send({
       status: "success",
-      data: newData,
+      data,
     });
   } catch (error) {
     console.log(error);
@@ -122,7 +112,7 @@ exports.getBarangId = async (req, res) => {
       priceBuy: item.priceBuy,
       priceSell: item.priceSell,
       stock: item.stock,
-      image: pathFile + item.image,
+      image: item.image,
     }));
 
     res.send({
@@ -144,7 +134,7 @@ exports.editBarang = async (req, res) => {
 
     await barang.update(
       {
-        image: req.files.image[0].filename,
+        image: req.body.image,
         name: req.body.name,
         priceBuy: req.body.priceBuy,
         priceSell: req.body.priceSell,
@@ -181,7 +171,7 @@ exports.editBarang = async (req, res) => {
       priceBuy: item.priceBuy,
       priceSell: item.priceSell,
       stock: item.stock,
-      image: pathFile + item.image,
+      image: item.image,
     }));
 
     res.send({
