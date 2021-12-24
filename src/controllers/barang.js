@@ -58,6 +58,9 @@ exports.addItem = async (req, res) => {
 exports.getBarang = async (req, res) => {
   try {
     const data = await barang.findAll({
+      where: {
+        idUser: req.user.id,
+      },
       include: [
         {
           model: user,
