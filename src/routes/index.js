@@ -13,6 +13,7 @@ const {
   getBarangId,
   editBarang,
   deleteBarang,
+  getBarangUser,
 } = require("../controllers/barang");
 
 router.post("/register", register);
@@ -21,6 +22,7 @@ router.get("/check-auth", auth, checkAuth);
 
 router.post("/add-item", auth, uploadFile("image"), addItem);
 router.get("/get-item", auth, getBarang);
+router.get("/get-item-user", auth, getBarangUser);
 router.get("/detail-item/:id", auth, getBarangId);
 router.patch("/edit-item/:id", auth, uploadFile("image"), editBarang);
 router.delete("/delete-item/:id", auth, deleteBarang);

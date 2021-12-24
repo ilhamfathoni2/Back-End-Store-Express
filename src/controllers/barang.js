@@ -58,6 +58,35 @@ exports.addItem = async (req, res) => {
 exports.getBarang = async (req, res) => {
   try {
     const data = await barang.findAll({
+      include: [
+        {
+          model: user,
+          attributes: {
+            exclude: ["createdAt", "updatedAt", "password"],
+          },
+        },
+      ],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    });
+
+    res.send({
+      status: "success",
+      data,
+    });
+  } catch (error) {
+    console.log(error);
+    res.send({
+      status: "failed",
+      message: "Server Error",
+    });
+  }
+};
+
+exports.getBarangUser = async (req, res) => {
+  try {
+    const data = await barang.findAll({
       where: {
         idUser: req.user.id,
       },
