@@ -11,8 +11,8 @@ exports.addItem = async (req, res) => {
     });
 
     if (itemExist) {
-      return res.status(400).send({
-        status: "failed",
+      return res.send({
+        status: "Item already",
         message: "Item already exist",
       });
     }
